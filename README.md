@@ -19,7 +19,8 @@ How to Use
 
   Set your manufacturer CPCID, postal code by calling the function setManufacturer 
   
-  
+<pre>  
+
   $cPost->setManufacturer( array (
       'merchantCPCID' => CPC_DEMO_XML, // use your merchantCPCID
       'fromPostalCode' => YOUR_POSTAL_CODE, // use your postal code from where the item will be shipped
@@ -28,9 +29,12 @@ How to Use
     )
   ); 
 
+</pre>
 
   Then set the Customer address in the format shown below, again in associative array format.
   Note: city and provOrState are optional. Only Postal Code and country is required. 
+
+<pre>
    
   $cPost->setCustomer( array (
      'city' => 'Brampton', [CUSTOMER_CITY]
@@ -40,11 +44,20 @@ How to Use
    )
   );
 
+</pre>
+
   Then, set the total price of shipping
+
+<pre>
   
   $cPost->setPrice(15);
+
+</pre>
   
   Then, add the products needed to be shipped (add as many as you want), in the format shown below:
+  
+<pre>
+  
   $cPost->addProduct(  array (
     'quantity' => 1,
     'weight'=> 2,
@@ -55,24 +68,28 @@ How to Use
    )
   );
 
+</pre>
   
   Then, invoke the method below (returns XML format of details from Canada Post Server):
-  
+
+<pre>  
   $responseXML = $cPost->getRates();  
-  
+</pre>  
   
   If you wish to get the response in associative array, use the following:
 
+<pre>
   $responseArray = $cPost->getRates('array');
-  
+</pre>  
   
   If any error occurs, the above method should return false. So, you can check it like below:
-  
+
+<pre>  
   $rXML = $cPost->getRates(); 
   if( $rXML === false ) {
     echo $cPost->getErrorMessage();
   }
-  
+</pre>  
   
   For a sample demo, please check out demo.php
 
